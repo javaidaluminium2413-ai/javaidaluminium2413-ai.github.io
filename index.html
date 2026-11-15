@@ -197,6 +197,31 @@
   .card .q:hover{text-decoration:underline}
   .card .q svg{width:16px;height:16px}
 
+  /* downloads */
+  .downloads{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:900px){.downloads{grid-template-columns:1fr}}
+  .dl-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;
+    box-shadow:0 4px 14px rgba(10,63,58,.06);display:flex;flex-direction:column;gap:10px;
+  }
+  .dl-icon{
+    width:56px;height:56px;border-radius:14px;background:var(--bg-tint);
+    display:grid;place-items:center;margin-bottom:4px;
+  }
+  .dl-icon svg{width:28px;height:28px;stroke:var(--teal-dark)}
+  .dl-meta{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--gold)}
+  .dl-card h3{margin:0;font-size:19px;font-weight:800;line-height:1.25}
+  .dl-card p{margin:0;color:var(--ink-2);font-size:14.5px;flex:1}
+  .dl-btn{width:100%;margin-top:10px}
+  .dl-btn svg{width:19px;height:19px;flex:0 0 19px}
+  .dl-note{
+    margin-top:22px;background:var(--teal-deep);color:#fff;border-radius:var(--r-lg);
+    padding:24px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  }
+  .dl-note p{margin:0;font-size:16.5px;font-weight:600;line-height:1.6;max-width:42em;color:#e6f2f0}
+  .dl-note .btn{flex:0 0 auto}
+  @media (max-width:640px){.dl-note .btn{width:100%}}
+
   /* finishes */
   .finishes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   @media (max-width:900px){.finishes{grid-template-columns:repeat(2,1fr)}}
@@ -356,6 +381,7 @@
     </a>
     <nav class="links" id="navLinks" aria-label="Main">
       <a href="#products">Products</a>
+      <a href="#downloads">Downloads</a>
       <a href="#projects">Projects</a>
       <a href="#calculator">Size Calculator</a>
       <a href="#quote">Get a Quote</a>
@@ -519,6 +545,56 @@
             <a class="q" data-wa-product="Aluminium Sections & Hardware" href="#" target="_blank" rel="noopener">Ask rate on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= downloads ======= -->
+  <section id="downloads" aria-labelledby="downloads-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Downloads</p>
+        <h2 id="downloads-h">Rate Lists &amp; Catalogues</h2>
+        <p>Factory ki official rate lists aur catalogue — ek click mein download karen. Jab bhi nayi list aayegi, yahin taaza list milegi.</p>
+      </div>
+      <div class="downloads">
+        <article class="dl-card reveal">
+          <div class="dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></div>
+          <span class="dl-meta">PDF · Rate List</span>
+          <h3>Prime Rate List</h3>
+          <p>Prime Aluminium Industries — official price list, effective 03-04-2026 (PDF)</p>
+          <a class="btn btn-call dl-btn" href="prime-rate-list.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+            Download PDF
+          </a>
+        </article>
+        <article class="dl-card reveal">
+          <div class="dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></div>
+          <span class="dl-meta">PDF · Rate List</span>
+          <h3>Pak Alumex Rate List</h3>
+          <p>Pak Alumex — official price list, effective 03-04-2026 (PDF)</p>
+          <a class="btn btn-call dl-btn" href="pak-alumex-rate-list.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+            Download PDF
+          </a>
+        </article>
+        <article class="dl-card reveal">
+          <div class="dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4a2 2 0 0 0-2-2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/><path d="M9 7h7"/></svg></div>
+          <span class="dl-meta">PDF · Catalogue</span>
+          <h3>Prime Catalogue</h3>
+          <p>Prime Aluminium Industries — complete section catalogue with drawings (PDF)</p>
+          <a class="btn btn-call dl-btn" href="prime-catalogue.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+            Download PDF
+          </a>
+        </article>
+      </div>
+      <div class="dl-note reveal">
+        <p>Ye factory ki official list hai — aap ka net dealer rate jaanne ke liye WhatsApp par rabta karen.</p>
+        <a class="btn btn-wa" href="https://wa.me/923322418106?text=Assalam-o-Alaikum%2C%20mujhe%20apna%20net%20dealer%20rate%20jaanna%20hai." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2 22l4.9-1.6A9.94 9.94 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .9 1-2.9-.2-.3a8.2 8.2 0 1 1 6.7 3.6zm4.6-6.1c-.3-.1-1.5-.8-1.7-.9-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg>
+          Net Rate on WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -805,6 +881,7 @@
       </div>
       <div>
         <h4>Quick Links</h4>
+        <a href="#downloads">Downloads</a>
         <a href="#calculator">Size Calculator</a>
         <a href="#quote">Request a Quotation</a>
         <a href="#projects">Our Projects</a>
