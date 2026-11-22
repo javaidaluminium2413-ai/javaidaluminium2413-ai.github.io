@@ -379,14 +379,14 @@
         background: var(--nav-bg);
         border: 1px solid rgba(255,255,255,.09);
         border-radius: 22px;
-        display: grid; grid-template-columns: repeat(4, 1fr);
+        display: grid; grid-template-columns: repeat(5, 1fr);
         box-shadow: var(--shadow-nav);
         padding: 6px;
         gap: 4px;
       }
       nav.bottom button {
         background: none; border: none; cursor: pointer; color: var(--nav-ink);
-        font-family: inherit; font-size: .94rem; font-weight: 600; line-height: 1.7;
+        font-family: inherit; font-size: .88rem; font-weight: 600; line-height: 1.7;
         display: flex; flex-direction: column; align-items: center; gap: 1px;
         padding: 8px 4px 6px; min-height: 60px; justify-content: center;
         border-radius: 16px;
@@ -465,6 +465,56 @@
       .conv-form { background: var(--teal-tint); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 14px; text-align: center; font-weight: 700; margin-top: 12px; font-size: 1.02rem; }
       .conv-form .num { font-size: 1.05rem; }
 
+      /* ---------- Glass & estimate multi-size rows ---------- */
+      .glass-row, .est-row { border-top: 1px dashed var(--line); margin-top: 14px; padding-top: 6px; }
+      .glass-row:first-child, .est-row:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+      .glass-row-head, .est-row-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .glass-row-title, .est-row-title { font-weight: 700; font-size: 1.02rem; }
+      .glass-del, .est-del { background: none; border: none; color: #b3261e; font-family: inherit; font-size: .92rem; font-weight: 600; cursor: pointer; padding: 6px 4px; min-height: 40px; }
+      @media (prefers-color-scheme: dark) { .glass-del, .est-del { color: #f08a80; } }
+      .glass-row-area, .est-row-sub { display: none; margin: 8px 0 0; font-weight: 700; color: var(--teal-deep); font-size: .95rem; }
+      .glass-row-area.show, .est-row-sub.show { display: block; }
+      @media (prefers-color-scheme: dark) { .glass-row-area, .est-row-sub { color: var(--teal); } }
+
+      /* ---------- Clear-all / start-over buttons ---------- */
+      .btn-clear { background: var(--surface); color: #b3261e; border: 1.5px solid #b3261e; }
+      @media (prefers-color-scheme: dark) { .btn-clear { color: #f08a80; border-color: #f08a80; } }
+      .btn-clear.armed { background: #b3261e; color: #fff; border-color: transparent; }
+      @media (prefers-color-scheme: dark) { .btn-clear.armed { background: #8f1d17; color: #fff; } }
+      .pay-del { background: none; border: none; color: #b3261e; font-family: inherit; font-size: .85rem; font-weight: 600; cursor: pointer; padding: 4px 2px; min-height: 36px; flex: 0 0 auto; }
+      @media (prefers-color-scheme: dark) { .pay-del { color: #f08a80; } }
+
+      /* ---------- Khata (estimate + udhaar ledger) ---------- */
+      .khata-due { cursor: pointer; }
+      .khata-due .kd-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .khata-due .kd-title { font-weight: 700; font-size: 1.08rem; }
+      .khata-due .kd-sub { color: var(--ink-soft); font-size: .9rem; }
+      .khata-due .kd-num { font-family: ui-sans-serif, system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; direction: ltr; color: #b3261e; white-space: nowrap; }
+      @media (prefers-color-scheme: dark) { .khata-due .kd-num { color: #f08a80; } }
+      .khata-due .kd-num.clear { color: var(--teal); }
+      .job-card .job-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+      .job-card .job-name { font-weight: 700; font-size: 1.1rem; line-height: 1.9; }
+      .job-card .job-meta { color: var(--ink-soft); font-size: .88rem; line-height: 1.8; }
+      .job-card .job-meta .num { font-weight: 700; }
+      .job-amts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 10px; }
+      .job-amts .stat-cell .s-num { font-size: 1.15rem; }
+      .job-amts .bal .s-num { color: #b3261e; }
+      @media (prefers-color-scheme: dark) { .job-amts .bal .s-num { color: #f08a80; } }
+      .job-amts .bal.clear .s-num { color: var(--teal); }
+      .job-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 12px; }
+      .job-actions .btn { min-height: 48px; font-size: .98rem; padding: 6px 8px; }
+      .btn-remind { background: linear-gradient(160deg, #25bb5f, var(--wa) 60%, #178a42); color: #fff; box-shadow: var(--shadow-sm); }
+      .btn-pay { background: var(--surface); color: var(--teal); border: 1.5px solid var(--teal); }
+      .pay-form { display: none; margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 4px; }
+      .pay-form.show { display: block; animation: riseIn .35s cubic-bezier(.22,.8,.32,1) both; }
+      .pay-list { margin: 10px 0 0; padding: 0; list-style: none; font-size: .92rem; }
+      .pay-list li { display: flex; justify-content: space-between; gap: 10px; padding: 6px 2px; border-bottom: 1px solid var(--line); }
+      .pay-list li:last-child { border-bottom: none; }
+      .pay-list .num { font-weight: 700; }
+      .job-del { background: none; border: none; color: #b3261e; font-family: inherit; font-size: .9rem; font-weight: 600; cursor: pointer; padding: 6px 4px; min-height: 40px; }
+      @media (prefers-color-scheme: dark) { .job-del { color: #f08a80; } }
+      .khata-empty { text-align: center; color: var(--ink-soft); padding: 22px 10px; }
+
       /* ---------- Registration gate ---------- */
       .gate {
         display: none;
@@ -516,7 +566,7 @@
     <script>
       try { if (localStorage.getItem('ja_registered') !== '1') document.documentElement.classList.add('ja-noreg'); } catch (e) { document.documentElement.classList.add('ja-noreg'); }
     </script>
-  <link rel="manifest" href="manifest.json" /><meta name="theme-color" content="#07473e" /><meta name="mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-title" content="Javaid Aluminum" /></head>
+    <link rel="manifest" href="manifest.json" /><meta name="theme-color" content="#07473e" /><meta name="mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-capable" content="yes" /><meta name="apple-mobile-web-app-title" content="Javaid Aluminum" /></head>
   <body>
 
     <!-- ============ REGISTRATION GATE ============ -->
@@ -600,6 +650,16 @@
           </div>
         </div>
 
+        <div class="card rise khata-due" id="khataDueCard" data-goto="khata" role="button" tabindex="0" aria-label="میرا کھاتہ کھولیں">
+          <div class="kd-row">
+            <div>
+              <div class="kd-title">میرا کھاتہ — بقایا وصولی</div>
+              <div class="kd-sub" id="dueSub">ابھی کوئی کھاتہ نہیں — پہلی جاب شامل کریں</div>
+            </div>
+            <div class="kd-num clear" id="dueTotal">Rs 0</div>
+          </div>
+        </div>
+
         <div class="card rise">
           <h3 style="margin:0;font-size:1.12rem;font-weight:700">نماز کے اوقات — کراچی</h3>
           <p class="hint" style="margin-top:0">حنفی مسلک — فجر و عشاء 18° — مقامی حساب، انٹرنیٹ کے بغیر</p>
@@ -620,7 +680,14 @@
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
             </span>
             اسٹیمیٹ کیلکولیٹر
-            <small>سلائیڈنگ کھڑکی — رننگ فٹ حساب</small>
+            <small>سلائیڈنگ کھڑکی — رننگ فٹ + اسکوائر فٹ حساب</small>
+          </button>
+          <button type="button" class="tile" data-goto="khata">
+            <span class="tile-ic">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h8M9 11h5"/></svg>
+            </span>
+            میرا کھاتہ
+            <small>اسٹیمیٹ، ایڈوانس اور بقایا — واٹس ایپ یاددہانی</small>
           </button>
           <button type="button" class="tile" data-goto="calc" data-focus="wt">
             <span class="tile-ic">
@@ -716,16 +783,30 @@
       <!-- ============ CALCULATOR ============ -->
       <section class="view" id="view-calc">
         <h2 class="sec" id="est">اسٹیمیٹ کیلکولیٹر — سلائیڈنگ کھڑکی</h2>
-        <p class="lead">دو پینل والی باکس سلائیڈنگ کھڑکی کا سائز لکھیں — ہر سیکشن کی مطلوبہ لمبائی (رننگ فٹ) خود گن کر مل جائے گی۔</p>
+        <p class="lead">دو پینل والی باکس سلائیڈنگ کھڑکی کے سائز لکھیں — ہر سیکشن کی مطلوبہ لمبائی (رننگ فٹ) کے ساتھ ساتھ کھڑکیوں کا رقبہ (اسکوائر فٹ) بھی خود گن کر مل جائے گا۔ اصول یہ ہے: <strong>4×4 فٹ یا اس سے بڑی کھڑکیاں اسکوائر فٹ میں</strong> اور <strong>4 فٹ سے چھوٹی کھڑکیاں رننگ فٹ میں</strong> گنی جاتی ہیں۔ ریٹ فی اسکوائر فٹ لکھیں تو کل رقم بھی ساتھ آ جائے گی۔ مختلف سائز کی کھڑکیاں ہوں تو «ایک اور سائز شامل کریں» سے نئی لائن جوڑیں — مثلاً 4×4 کی 4 کھڑکیاں، 2×2 کی 4 اور 6×4 کی 2 — سب ایک ساتھ گنیں۔</p>
 
         <div class="card rise">
-          <label class="f" for="inW">چوڑائی — <span class="lat">Width</span> (فٹ)</label>
-          <input type="number" id="inW" inputmode="decimal" min="0" step="0.1" placeholder="4" />
-          <label class="f" for="inH">اونچائی — <span class="lat">Height</span> (فٹ)</label>
-          <input type="number" id="inH" inputmode="decimal" min="0" step="0.1" placeholder="4" />
-          <label class="f" for="inN">کھڑکیوں کی تعداد</label>
-          <input type="number" id="inN" inputmode="numeric" min="1" step="1" placeholder="1" />
+          <div id="estRows">
+            <div class="est-row">
+              <div class="est-row-head">
+                <span class="est-row-title">سائز 1</span>
+                <button type="button" class="est-del">حذف کریں</button>
+              </div>
+              <div class="cut-row">
+                <div><label class="f" for="inW">چوڑائی — <span class="lat">Width</span> (فٹ)</label><input class="e-w" type="number" id="inW" inputmode="decimal" min="0" step="0.1" placeholder="4" /></div>
+                <div><label class="f" for="inH">اونچائی — <span class="lat">Height</span> (فٹ)</label><input class="e-h" type="number" id="inH" inputmode="decimal" min="0" step="0.1" placeholder="4" /></div>
+              </div>
+              <label class="f" for="inN">اس سائز کی کھڑکیوں کی تعداد</label>
+              <input class="e-n" type="number" id="inN" inputmode="numeric" min="1" step="1" placeholder="1" />
+              <p class="est-row-sub"></p>
+            </div>
+          </div>
+          <button class="btn btn-ghost btn-block" type="button" id="btnAddEstRow">+ ایک اور سائز شامل کریں</button>
+          <label class="f" for="inRate">ریٹ فی اسکوائر فٹ (روپے) <span class="lat">(اختیاری — لکھیں تو کل رقم بھی آ جائے گی)</span></label>
+          <input type="number" id="inRate" inputmode="decimal" min="0" step="1" placeholder="مثلاً 850" />
           <button class="btn btn-gold btn-block" type="button" id="btnCalc">حساب کریں</button>
+          <button class="btn btn-clear btn-block" type="button" id="btnClearEst">تمام صاف کریں — نیا حساب شروع کریں</button>
+          <p class="hint">غلطی ہو جائے تو «تمام صاف کریں» دبائیں — تمام سائز، ریٹ اور نتیجہ صاف ہو جائے گا، پھر دوبارہ لکھ کر از سرِ نو حساب کریں۔ کسی ایک سائز کو ہٹانا ہو تو اس کی لائن پر «حذف کریں» دبائیں۔</p>
 
           <div class="result" id="estResult">
             <table class="rft">
@@ -734,11 +815,31 @@
               </thead>
               <tbody id="estBody"></tbody>
             </table>
+            <ul class="layout-list" id="estSizeList"></ul>
             <div class="total-card">
-              <div class="t-label">کل لمبائی</div>
+              <div class="t-label">کل لمبائی — تمام سائز ملا کر</div>
               <div class="t-num" id="estTotal">0</div>
-              <div class="t-unit">رننگ فٹ (RFT)</div>
+              <div class="t-unit">رننگ فٹ (RFT) — کل کھڑکیاں: <span class="num" id="estWindows">0</span></div>
             </div>
+            <div class="stat-grid">
+              <div class="stat-cell"><div class="s-num" id="estSqftBig">0</div><div class="s-lab">اسکوائر فٹ — 4×4 یا بڑی کھڑکیاں</div></div>
+              <div class="stat-cell"><div class="s-num" id="estSqftAll">0</div><div class="s-lab">کل رقبہ — تمام کھڑکیاں (sq ft)</div></div>
+              <div class="stat-cell"><div class="s-num" id="estSmallRft">0</div><div class="s-lab">رننگ فٹ — 4 فٹ سے چھوٹی کھڑکیاں</div></div>
+            </div>
+            <div class="big-result" id="estAmountBox" style="display:none">
+              کل رقم (اندازاً): <span class="num" id="estAmount">0</span> روپے
+              <div style="font-size:.92rem;font-weight:600" id="estAmountBreak"></div>
+            </div>
+            <p class="hint">اصول: 4×4 فٹ یا اس سے بڑی کھڑکیاں اسکوائر فٹ میں گنی جاتی ہیں، اور 4 فٹ سے چھوٹی کھڑکیاں رننگ فٹ میں۔ رقم صرف اسکوائر فٹ میں گنی جانے والی کھڑکیوں پر لگی ہے۔</p>
+            <label class="f" for="estCustName">کسٹمر کا نام <span class="lat">(اسٹیمیٹ بھیجنے کے لیے)</span></label>
+            <input type="text" id="estCustName" placeholder="مثلاً محمد احمد" />
+            <label class="f" for="estCustMob">کسٹمر کا موبائل <span class="lat">(اختیاری — لکھیں تو سیدھا اسی نمبر پر جائے گا)</span></label>
+            <input type="tel" id="estCustMob" inputmode="tel" placeholder="03XX-XXXXXXX" />
+            <a class="btn btn-gold btn-block" id="btnQuoteCust" href="https://wa.me/?text=" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              کسٹمر کو اسٹیمیٹ بھیجیں — واٹس ایپ
+            </a>
+            <button class="btn btn-ghost btn-block" type="button" id="btnEstKhata">یہ جاب کھاتے میں شامل کریں</button>
             <a class="btn btn-wa btn-block" id="btnWaEst" href="https://wa.me/923322418106" target="_blank" rel="noopener">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
               ریٹ اور مکمل اسٹیمیٹ کے لیے واٹس ایپ کریں
@@ -767,6 +868,7 @@
             کل وزن: <span class="num" id="wtKg">0</span> کلوگرام
           </div>
           <a class="btn btn-share btn-block" id="btnShareWt" href="https://wa.me/?text=" target="_blank" rel="noopener" style="display:none">واٹس ایپ پر نتیجہ بھیجیں</a>
+          <button class="btn btn-clear btn-block" type="button" id="btnClearWt">صاف کریں — نیا وزن گنیں</button>
           <p class="hint">وزن اصل تولے ہوئے حساب سے ہے (موٹائی 1.2mm) — اندازاً معمولی فرق ممکن ہے۔</p>
         </div>
 
@@ -799,6 +901,7 @@
           </div>
           <p class="hint">بلیڈ کی موٹائی شامل نہیں — اصل کٹائی میں بلیڈ کی جگہ الگ سے گھٹے گی۔</p>
           <button class="btn btn-gold btn-block" type="button" id="btnCut">کٹنگ گنیں</button>
+          <button class="btn btn-clear btn-block" type="button" id="btnClearCut">تمام صاف کریں — نئی کٹنگ گنیں</button>
           <div class="result" id="cutResult">
             <div class="stat-grid">
               <div class="stat-cell"><div class="s-num" id="cutBars">0</div><div class="s-lab">کل بار</div></div>
@@ -812,19 +915,47 @@
         </div>
 
         <h2 class="sec" id="glass">شیشہ کیلکولیٹر</h2>
-        <p class="lead">شیشے کی چوڑائی اور اونچائی انچ میں لکھیں — رقبہ (اسکوائر فٹ) اور کٹنگ سائز مل جائے گا۔</p>
+        <p class="lead">ہر سائز کی چوڑائی، اونچائی اور تعداد لکھیں — مختلف سائز شامل کر کے سب کا ملا ہوا کل رقبہ (اسکوائر فٹ) اور ہر سائز کا کٹنگ سائز مل جائے گا۔ مثلاً 4×4 کے 4 شیشے، 2×2 کے 4 اور 6×4 کے 2 — سب ایک ساتھ گنیں۔</p>
         <div class="card rise">
-          <label class="f" for="glassW">چوڑائی (انچ)</label>
-          <input type="number" id="glassW" inputmode="decimal" min="0" step="0.1" placeholder="36" />
-          <label class="f" for="glassH">اونچائی (انچ)</label>
-          <input type="number" id="glassH" inputmode="decimal" min="0" step="0.1" placeholder="48" />
+          <label class="f" for="glassUnit">اکائی — سائز کس میں لکھیں گے؟</label>
+          <select id="glassUnit">
+            <option value="in" selected>انچ (Inch)</option>
+            <option value="ft">فٹ (Feet)</option>
+          </select>
+          <div id="glassRows">
+            <div class="glass-row">
+              <div class="glass-row-head">
+                <span class="glass-row-title">سائز 1</span>
+                <button type="button" class="glass-del">حذف کریں</button>
+              </div>
+              <div class="cut-row">
+                <div><label class="f" for="glassW">چوڑائی</label><input class="g-w" type="number" id="glassW" inputmode="decimal" min="0" step="0.1" placeholder="36" /></div>
+                <div><label class="f" for="glassH">اونچائی</label><input class="g-h" type="number" id="glassH" inputmode="decimal" min="0" step="0.1" placeholder="48" /></div>
+              </div>
+              <label class="f" for="glassQty">تعداد — اس سائز کے کتنے شیشے؟</label>
+              <input class="g-q" type="number" id="glassQty" inputmode="numeric" min="1" step="1" placeholder="1" />
+              <p class="glass-row-area"></p>
+            </div>
+          </div>
+          <button class="btn btn-ghost btn-block" type="button" id="btnAddGlassRow">+ ایک اور سائز شامل کریں</button>
           <button class="btn btn-gold btn-block" type="button" id="btnGlass">حساب کریں</button>
+          <button class="btn btn-clear btn-block" type="button" id="btnClearGlass">تمام صاف کریں — نیا حساب شروع کریں</button>
+          <p class="hint">غلطی ہو جائے تو «تمام صاف کریں» دبائیں — تمام سائز اور نتیجہ صاف ہو جائے گا، پھر دوبارہ لکھ کر حساب کریں۔ کسی ایک سائز کو ہٹانا ہو تو اس کی لائن پر «حذف کریں» دبائیں۔</p>
           <div class="result" id="glassResult">
-            <div class="stat-grid" style="grid-template-columns:1fr 1fr">
-              <div class="stat-cell"><div class="s-num" id="glassArea">0</div><div class="s-lab">رقبہ (اسکوائر فٹ)</div></div>
-              <div class="stat-cell"><div class="s-num" id="glassCut" style="font-size:1.1rem;padding-top:6px">—</div><div class="s-lab">کٹنگ سائز (انچ)</div></div>
+            <table class="rft">
+              <thead>
+                <tr><th>سائز</th><th class="val">تعداد</th><th class="val">رقبہ (sq ft)</th></tr>
+              </thead>
+              <tbody id="glassBody"></tbody>
+            </table>
+            <ul class="layout-list" id="glassCutList"></ul>
+            <div class="total-card">
+              <div class="t-label">کل رقبہ — تمام سائز ملا کر</div>
+              <div class="t-num" id="glassArea">0</div>
+              <div class="t-unit">اسکوائر فٹ (sq ft) — کل شیشے: <span class="num" id="glassPieces">0</span></div>
             </div>
             <p class="hint">کٹنگ سائز: ہر سائیڈ سے 1/8 انچ کم (کل چوڑائی و اونچائی سے 1/4 انچ کم) تاکہ شیشہ فریم میں آسانی سے بیٹھے۔</p>
+            <a class="btn btn-share btn-block" id="btnShareGlass" href="https://wa.me/?text=" target="_blank" rel="noopener" style="display:none">واٹس ایپ پر نتیجہ بھیجیں</a>
           </div>
         </div>
 
@@ -1032,6 +1163,46 @@
         <a class="btn btn-wa btn-block" href="https://wa.me/923322418106?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%8C%DA%A9%D9%85%D8%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D9%BE%D8%B1%D9%88%DA%88%DA%A9%D9%B9%20%DA%A9%DB%8C%20%D8%AA%D9%81%D8%B5%DB%8C%D9%84%20%D8%A7%D9%88%D8%B1%20%D8%B1%DB%8C%D9%B9%20%DA%86%D8%A7%DB%81%DB%8C%DB%92" target="_blank" rel="noopener">پروڈکٹ کی تفصیل واٹس ایپ پر پوچھیں</a>
       </section>
 
+      <!-- ============ KHATA ============ -->
+      <section class="view" id="view-khata">
+        <h2 class="sec">میرا کھاتہ — اسٹیمیٹ، ادھار و بقایا</h2>
+        <p class="lead">ہر جاب کا حساب یہیں رکھیں: کل رقم، وصول شدہ ایڈوانس اور بقایا۔ بقایا ہو تو ایک ٹیپ میں کسٹمر کو واٹس ایپ پر شائستہ یاددہانی بھیجیں۔ غلطی ہو جائے تو جاب کی «ترمیم» سے درست کر لیں، غلط ادائیگی یا پوری جاب «حذف» کر دیں — اور چاہیں تو نیچے سے تمام کھاتے صاف کر کے از سرِ نو نئے کھاتے بنائیں۔</p>
+
+        <div class="card rise">
+          <div class="stat-grid" style="margin-top:0">
+            <div class="stat-cell"><div class="s-num" id="khJobs">0</div><div class="s-lab">کل جابز</div></div>
+            <div class="stat-cell"><div class="s-num" id="khReceived">0</div><div class="s-lab">وصول شدہ (Rs)</div></div>
+            <div class="stat-cell"><div class="s-num" id="khDue">0</div><div class="s-lab">کل بقایا (Rs)</div></div>
+          </div>
+        </div>
+
+        <div class="card rise">
+          <h3 style="margin:0 0 4px;font-size:1.12rem;font-weight:700" id="khFormTitle">نئی جاب / نیا کھاتہ</h3>
+          <form id="khataForm" novalidate>
+            <label class="f" for="khName">کسٹمر کا نام</label>
+            <input type="text" id="khName" placeholder="مثلاً محمد احمد" />
+            <label class="f" for="khMobile">کسٹمر کا موبائل <span class="lat">(یاددہانی کے لیے)</span></label>
+            <input type="tel" id="khMobile" inputmode="tel" placeholder="03XX-XXXXXXX" />
+            <label class="f" for="khDetail">کام کی تفصیل</label>
+            <input type="text" id="khDetail" placeholder="مثلاً سلائیڈنگ کھڑکی 4 x 4 فٹ — 3 عدد" />
+            <div class="cut-row">
+              <div><label class="f" for="khTotal">کل رقم (Rs)</label><input type="number" id="khTotal" inputmode="numeric" min="0" step="1" placeholder="50000" /></div>
+              <div><label class="f" for="khAdvance">ایڈوانس وصول (Rs)</label><input type="number" id="khAdvance" inputmode="numeric" min="0" step="1" placeholder="0" /></div>
+            </div>
+            <label class="f" for="khNote">نوٹ <span class="lat">(اختیاری)</span></label>
+            <input type="text" id="khNote" placeholder="مثلاً سائٹ کا پتہ یا خاص ہدایت" />
+            <p class="reg-error" id="khError" role="alert"></p>
+            <button class="btn btn-gold btn-block" type="submit" id="khSubmit">کھاتے میں شامل کریں</button>
+            <button class="btn btn-ghost btn-block" type="button" id="khCancelEdit" style="display:none">ترمیم منسوخ کریں</button>
+          </form>
+        </div>
+
+        <h2 class="sec">میرے کھاتے</h2>
+        <div id="khataList" class="rise"></div>
+        <button class="btn btn-clear btn-block" type="button" id="btnClearKhata" style="display:none">تمام کھاتے صاف کریں — از سرِ نو شروع کریں</button>
+        <p class="hint" id="khataClearHint" style="display:none">یہ بٹن تمام جابز اور ان کی ادائیگیاں مستقل حذف کر دے گا — پھر آپ دوبارہ نئے کھاتے بنا سکیں گے۔ کسی ایک جاب کو ہٹانا ہو تو اسی جاب پر «حذف» دبائیں، اور غلطی درست کرنی ہو تو «ترمیم کریں»۔</p>
+      </section>
+
       <!-- ============ CONTACT ============ -->
       <section class="view" id="view-contact">
         <h2 class="sec">رابطہ کریں</h2>
@@ -1108,6 +1279,10 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/></svg>
         کیلکولیٹر
       </button>
+      <button type="button" data-nav="khata">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h8M9 11h5"/></svg>
+        کھاتہ
+      </button>
       <button type="button" data-nav="products">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
         پروڈکٹس
@@ -1145,7 +1320,7 @@
       lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
 
       // ---------- View switching ----------
-      var views = { home: 'view-home', calc: 'view-calc', products: 'view-products', contact: 'view-contact' };
+      var views = { home: 'view-home', calc: 'view-calc', khata: 'view-khata', products: 'view-products', contact: 'view-contact' };
       function showView(name) {
         for (var k in views) {
           document.getElementById(views[k]).classList.toggle('active', k === name);
@@ -1170,44 +1345,176 @@
         });
       }
 
-      // ---------- Estimate calculator ----------
+      // ---------- Estimate calculator — multiple window sizes ----------
       function fmt(n) {
         return (Math.round(n * 10) / 10).toLocaleString('en-US', { maximumFractionDigits: 1 });
       }
+      function fmtA(n) {
+        return (Math.round(n * 100) / 100).toLocaleString('en-US', { maximumFractionDigits: 2 });
+      }
+      function rsFmt(n) { return Math.round(n).toLocaleString('en-US'); }
+      var estRowsEl = document.getElementById('estRows');
+      var estSeq = 1;
+      function renumberEstRows() {
+        var rows = estRowsEl.querySelectorAll('.est-row');
+        for (var i = 0; i < rows.length; i++) {
+          rows[i].querySelector('.est-row-title').textContent = 'سائز ' + (i + 1);
+        }
+      }
+      function addEstRow() {
+        estSeq++;
+        var row = document.createElement('div');
+        row.className = 'est-row';
+        row.innerHTML = '<div class="est-row-head"><span class="est-row-title"></span>' +
+          '<button type="button" class="est-del">حذف کریں</button></div>' +
+          '<div class="cut-row">' +
+          '<div><label class="f" for="eW' + estSeq + '">چوڑائی — <span class="lat">Width</span> (فٹ)</label><input class="e-w" type="number" id="eW' + estSeq + '" inputmode="decimal" min="0" step="0.1" placeholder="4" /></div>' +
+          '<div><label class="f" for="eH' + estSeq + '">اونچائی — <span class="lat">Height</span> (فٹ)</label><input class="e-h" type="number" id="eH' + estSeq + '" inputmode="decimal" min="0" step="0.1" placeholder="4" /></div>' +
+          '</div>' +
+          '<label class="f" for="eN' + estSeq + '">اس سائز کی کھڑکیوں کی تعداد</label>' +
+          '<input class="e-n" type="number" id="eN' + estSeq + '" inputmode="numeric" min="1" step="1" placeholder="1" />' +
+          '<p class="est-row-sub"></p>';
+        estRowsEl.appendChild(row);
+        renumberEstRows();
+        var w = row.querySelector('.e-w');
+        if (w) w.focus();
+      }
+      document.getElementById('btnAddEstRow').addEventListener('click', addEstRow);
+      estRowsEl.addEventListener('click', function (e) {
+        var btn = e.target;
+        if (!btn || !btn.classList || !btn.classList.contains('est-del')) return;
+        var row = btn;
+        while (row && !(row.classList && row.classList.contains('est-row'))) row = row.parentNode;
+        if (!row) return;
+        var rows = estRowsEl.querySelectorAll('.est-row');
+        if (rows.length > 1) {
+          row.parentNode.removeChild(row);
+          renumberEstRows();
+        } else {
+          var ins = row.querySelectorAll('input');
+          for (var i = 0; i < ins.length; i++) ins[i].value = '';
+          var sub = row.querySelector('.est-row-sub');
+          sub.textContent = ''; sub.classList.remove('show');
+        }
+      });
       document.getElementById('btnCalc').addEventListener('click', function () {
-        var W = parseFloat(document.getElementById('inW').value);
-        var H = parseFloat(document.getElementById('inH').value);
-        var N = parseInt(document.getElementById('inN').value, 10);
-        if (!(W > 0) || !(H > 0) || !(N >= 1)) {
+        var secNames = ['DC-30B', 'DC-26B', 'M-23', 'M-28', 'M-24', 'D-29'];
+        var secTotals = [0, 0, 0, 0, 0, 0];
+        var rows = estRowsEl.querySelectorAll('.est-row');
+        var total = 0, totalWindows = 0, valid = 0;
+        var sqftBasis = 0, sqftAll = 0, smallRft = 0;
+        var rate = parseFloat(document.getElementById('inRate').value);
+        if (!(rate > 0)) rate = 0;
+        var sizeLines = [], sizeListHtml = '', first = null;
+        for (var r = 0; r < rows.length; r++) {
+          var wv = rows[r].querySelector('.e-w').value;
+          var hv = rows[r].querySelector('.e-h').value;
+          var subEl = rows[r].querySelector('.est-row-sub');
+          if (wv === '' && hv === '') { subEl.textContent = ''; subEl.classList.remove('show'); continue; }
+          var W = parseFloat(wv), H = parseFloat(hv);
+          var N = parseInt(rows[r].querySelector('.e-n').value, 10);
+          if (!(N >= 1)) N = 1;
+          if (!(W > 0) || !(H > 0)) { subEl.textContent = ''; subEl.classList.remove('show'); continue; }
+          var vals = [(W + 2 * H) * N, W * N, 2 * H * N, 2 * H * N, 2 * W * N, (W + 2 * H) * N];
+          var sizeTotal = 0;
+          for (var s = 0; s < vals.length; s++) { secTotals[s] += vals[s]; sizeTotal += vals[s]; }
+          total += sizeTotal; totalWindows += N; valid++;
+          var area = W * H * N;
+          var basis = (W >= 4 && H >= 4);
+          sqftAll += area;
+          if (basis) sqftBasis += area; else smallRft += sizeTotal;
+          if (!first) first = { W: W, H: H, N: N };
+          subEl.textContent = 'اس سائز کی کل لمبائی: ' + fmt(sizeTotal) + ' RFT (فی کھڑکی ' + fmt(sizeTotal / N) + ' × تعداد ' + N + ') — رقبہ: ' + fmtA(area) + ' اسکوائر فٹ — ' + (basis ? 'اسکوائر فٹ میں گنی جائے گی' : '4 فٹ سے چھوٹی، رننگ فٹ میں گنی جائے گی');
+          subEl.classList.add('show');
+          sizeLines.push('کھڑکی سائز: ' + fmt(W) + ' x ' + fmt(H) + ' فٹ، تعداد: ' + N + ' — ' + fmt(sizeTotal) + ' RFT — رقبہ ' + fmtA(area) + ' اسکوائر فٹ' + (basis ? ' (اسکوائر فٹ میں)' : ' (4 فٹ سے چھوٹی — رننگ فٹ میں)'));
+          sizeListHtml += '<li>سائز ' + valid + ' — <span class="num">' + fmt(W) + ' × ' + fmt(H) + '</span> فٹ — تعداد <span class="num">' + N + '</span> — <span class="num">' + fmt(sizeTotal) + '</span> RFT — رقبہ <span class="num">' + fmtA(area) + '</span> اسکوائر فٹ — <strong>' + (basis ? 'اسکوائر فٹ میں' : 'رننگ فٹ میں (چھوٹی)') + '</strong></li>';
+        }
+        if (!valid) {
           document.getElementById('estResult').classList.remove('show');
           return;
         }
-        var rows = [
-          ['DC-30B', (W + 2 * H) * N],
-          ['DC-26B', W * N],
-          ['M-23', 2 * H * N],
-          ['M-28', 2 * H * N],
-          ['M-24', 2 * W * N],
-          ['D-29', (W + 2 * H) * N]
-        ];
-        var total = 0, html = '', lines = [], maxV = 0;
-        for (var i = 0; i < rows.length; i++) { if (rows[i][1] > maxV) maxV = rows[i][1]; }
-        for (var i = 0; i < rows.length; i++) {
-          total += rows[i][1];
-          var pct = maxV > 0 ? Math.round(rows[i][1] / maxV * 100) : 0;
-          html += '<tr><td class="code">' + rows[i][0] + '<span class="bar"><i style="width:' + pct + '%"></i></span></td><td class="val">' + fmt(rows[i][1]) + '</td></tr>';
-          lines.push(rows[i][0] + ': ' + fmt(rows[i][1]) + ' ft');
+        var html = '', lines = [], maxV = 0;
+        for (var i = 0; i < secTotals.length; i++) { if (secTotals[i] > maxV) maxV = secTotals[i]; }
+        for (var i = 0; i < secTotals.length; i++) {
+          var pct = maxV > 0 ? Math.round(secTotals[i] / maxV * 100) : 0;
+          html += '<tr><td class="code">' + secNames[i] + '<span class="bar"><i style="width:' + pct + '%"></i></span></td><td class="val">' + fmt(secTotals[i]) + '</td></tr>';
+          lines.push(secNames[i] + ': ' + fmt(secTotals[i]) + ' ft');
         }
         document.getElementById('estBody').innerHTML = html;
+        document.getElementById('estSizeList').innerHTML = valid > 1 ? sizeListHtml : '';
         document.getElementById('estTotal').textContent = fmt(total);
+        document.getElementById('estWindows').textContent = totalWindows;
+        document.getElementById('estSqftBig').textContent = fmtA(sqftBasis);
+        document.getElementById('estSqftAll').textContent = fmtA(sqftAll);
+        document.getElementById('estSmallRft').textContent = fmt(smallRft);
+        var amount = rate > 0 ? sqftBasis * rate : 0;
+        var amtBox = document.getElementById('estAmountBox');
+        if (rate > 0) {
+          amtBox.style.display = 'block';
+          document.getElementById('estAmount').textContent = rsFmt(amount);
+          document.getElementById('estAmountBreak').textContent = fmtA(sqftBasis) + ' اسکوائر فٹ × ' + rsFmt(rate) + ' روپے فی اسکوائر فٹ' + (sqftBasis <= 0 ? ' — تمام کھڑکیاں 4 فٹ سے چھوٹی ہیں، ان کا حساب رننگ فٹ میں ہے' : '');
+        } else {
+          amtBox.style.display = 'none';
+        }
+        var sqLines = '\nکل اسکوائر فٹ (4×4 یا بڑی کھڑکیاں): ' + fmtA(sqftBasis) + ' sq ft' +
+          '\nکل رقبہ (تمام کھڑکیاں): ' + fmtA(sqftAll) + ' sq ft' +
+          (smallRft > 0 ? '\nچھوٹی کھڑکیاں (4 فٹ سے کم): ' + fmt(smallRft) + ' RFT میں گنی گئیں' : '') +
+          (rate > 0 ? '\nریٹ: Rs ' + rsFmt(rate) + ' فی اسکوائر فٹ — کل رقم (اندازاً): Rs ' + rsFmt(amount) : '');
         var msg = 'السلام علیکم، میں نے JAVAID ALUMINUM ایپ سے اسٹیمیٹ گنا ہے۔\n' +
-          'کھڑکی سائز: ' + fmt(W) + ' x ' + fmt(H) + ' فٹ، تعداد: ' + N + '\n' +
-          lines.join('\n') + '\nکل: ' + fmt(total) + ' RFT\n' +
+          sizeLines.join('\n') + '\n' +
+          lines.join('\n') + '\nکل: ' + fmt(total) + ' RFT' + sqLines + '\n' +
           'براہ کرم ریٹ اور مکمل اسٹیمیٹ بھیج دیں۔ شکریہ';
         document.getElementById('btnWaEst').href = 'https://wa.me/923322418106?text=' + encodeURIComponent(msg);
-        var shareMsg = 'اسٹیمیٹ کیلکولیٹر — JAVAID ALUMINUM ایپ\nکھڑکی سائز: ' + fmt(W) + ' x ' + fmt(H) + ' فٹ، تعداد: ' + N + '\n' + lines.join('\n') + '\nکل: ' + fmt(total) + ' RFT';
+        var shareMsg = 'اسٹیمیٹ کیلکولیٹر — JAVAID ALUMINUM ایپ\n' + sizeLines.join('\n') + '\n' + lines.join('\n') + '\nکل: ' + fmt(total) + ' RFT' + sqLines;
         document.getElementById('btnShareEst').href = 'https://wa.me/?text=' + encodeURIComponent(shareMsg);
+        var amtSuffix = (rate > 0 ? ' — رقم Rs ' + rsFmt(amount) + ' (ریٹ Rs ' + rsFmt(rate) + ' فی اسکوائر فٹ)' : '');
+        window.jaLastEstimate = {
+          detail: (valid === 1
+            ? 'سلائیڈنگ کھڑکی ' + fmt(first.W) + ' x ' + fmt(first.H) + ' فٹ — تعداد ' + first.N + ' — کل ' + fmt(total) + ' RFT'
+            : 'سلائیڈنگ کھڑکیاں (' + valid + ' سائز، کل ' + totalWindows + ' کھڑکیاں) — ' + sizeLines.map(function (l) { return l.replace('کھڑکی سائز: ', ''); }).join('؛ ') + ' — کل ' + fmt(total) + ' RFT') + ' — رقبہ ' + fmtA(sqftAll) + ' اسکوائر فٹ' + amtSuffix,
+          sizes: valid > 1 ? sizeLines.join('\n') : null,
+          lines: lines.slice(),
+          total: fmt(total), W: fmt(first.W), H: fmt(first.H), N: first.N,
+          sqftBasis: fmtA(sqftBasis), sqftAll: fmtA(sqftAll), smallRft: fmt(smallRft),
+          rate: rate > 0 ? rsFmt(rate) : '', amount: rate > 0 ? rsFmt(amount) : ''
+        };
+        if (window.jaRefreshQuoteLink) window.jaRefreshQuoteLink();
         document.getElementById('estResult').classList.add('show');
+      });
+
+      // ---------- Estimate: clear everything & start over ----------
+      var btnClearEst = document.getElementById('btnClearEst');
+      var estArmTimer = null;
+      function estDisarm() {
+        clearTimeout(estArmTimer);
+        btnClearEst.removeAttribute('data-arm');
+        btnClearEst.classList.remove('armed');
+        btnClearEst.textContent = 'تمام صاف کریں — نیا حساب شروع کریں';
+      }
+      btnClearEst.addEventListener('click', function () {
+        if (btnClearEst.getAttribute('data-arm') === '1') {
+          estDisarm();
+          var rows = estRowsEl.querySelectorAll('.est-row');
+          for (var i = rows.length - 1; i >= 1; i--) rows[i].parentNode.removeChild(rows[i]);
+          var firstRow = estRowsEl.querySelector('.est-row');
+          var ins = firstRow.querySelectorAll('input');
+          for (var k = 0; k < ins.length; k++) ins[k].value = '';
+          var sub = firstRow.querySelector('.est-row-sub');
+          sub.textContent = ''; sub.classList.remove('show');
+          renumberEstRows();
+          document.getElementById('inRate').value = '';
+          document.getElementById('estCustName').value = '';
+          document.getElementById('estCustMob').value = '';
+          document.getElementById('estResult').classList.remove('show');
+          window.jaLastEstimate = null;
+          var w = firstRow.querySelector('.e-w');
+          if (w) w.focus();
+        } else {
+          btnClearEst.setAttribute('data-arm', '1');
+          btnClearEst.classList.add('armed');
+          btnClearEst.textContent = 'تمام سائز اور نتیجہ صاف ہو جائے گا — یقینی ہیں؟ دوبارہ ٹیپ کریں';
+          estArmTimer = setTimeout(estDisarm, 4000);
+        }
       });
 
       // ---------- Weight calculator ----------
@@ -1225,6 +1532,12 @@
         var sh = document.getElementById('btnShareWt');
         sh.href = 'https://wa.me/?text=' + encodeURIComponent(wmsg);
         sh.style.display = 'flex';
+      });
+      document.getElementById('btnClearWt').addEventListener('click', function () {
+        document.getElementById('wtFeet').value = '';
+        document.getElementById('wtResult').style.display = 'none';
+        document.getElementById('btnShareWt').style.display = 'none';
+        document.getElementById('wtFeet').focus();
       });
 
       // ---------- Day of year ----------
@@ -1360,16 +1673,145 @@
         document.getElementById('btnShareCut').href = 'https://wa.me/?text=' + encodeURIComponent(cmsg);
         document.getElementById('cutResult').classList.add('show');
       });
+      document.getElementById('btnClearCut').addEventListener('click', function () {
+        for (var k = 1; k <= 3; k++) {
+          document.getElementById('cutL' + k).value = '';
+          document.getElementById('cutQ' + k).value = '';
+        }
+        document.getElementById('cutBarCustom').value = '';
+        cutSel.value = '19';
+        document.getElementById('cutCustomWrap').style.display = 'none';
+        document.getElementById('cutResult').classList.remove('show');
+        document.getElementById('cutL1').focus();
+      });
 
-      // ---------- Glass calculator (area only, no price) ----------
+      // ---------- Glass calculator — multiple sizes (area only, no price) ----------
+      var glassRowsEl = document.getElementById('glassRows');
+      var glassSeq = 1;
+      function glassTrim(n) { return (Math.round(n * 100) / 100).toLocaleString('en-US', { maximumFractionDigits: 2 }); }
+      function renumberGlassRows() {
+        var rows = glassRowsEl.querySelectorAll('.glass-row');
+        for (var i = 0; i < rows.length; i++) {
+          rows[i].querySelector('.glass-row-title').textContent = 'سائز ' + (i + 1);
+        }
+      }
+      function applyGlassPlaceholders() {
+        var ft = document.getElementById('glassUnit').value === 'ft';
+        var ws = glassRowsEl.querySelectorAll('.g-w'), hs = glassRowsEl.querySelectorAll('.g-h');
+        for (var i = 0; i < ws.length; i++) ws[i].placeholder = ft ? '3' : '36';
+        for (var j = 0; j < hs.length; j++) hs[j].placeholder = ft ? '4' : '48';
+      }
+      function addGlassRow() {
+        glassSeq++;
+        var row = document.createElement('div');
+        row.className = 'glass-row';
+        row.innerHTML = '<div class="glass-row-head"><span class="glass-row-title"></span>' +
+          '<button type="button" class="glass-del">حذف کریں</button></div>' +
+          '<div class="cut-row">' +
+          '<div><label class="f" for="gW' + glassSeq + '">چوڑائی</label><input class="g-w" type="number" id="gW' + glassSeq + '" inputmode="decimal" min="0" step="0.1" placeholder="36" /></div>' +
+          '<div><label class="f" for="gH' + glassSeq + '">اونچائی</label><input class="g-h" type="number" id="gH' + glassSeq + '" inputmode="decimal" min="0" step="0.1" placeholder="48" /></div>' +
+          '</div>' +
+          '<label class="f" for="gQ' + glassSeq + '">تعداد — اس سائز کے کتنے شیشے؟</label>' +
+          '<input class="g-q" type="number" id="gQ' + glassSeq + '" inputmode="numeric" min="1" step="1" placeholder="1" />' +
+          '<p class="glass-row-area"></p>';
+        glassRowsEl.appendChild(row);
+        renumberGlassRows();
+        applyGlassPlaceholders();
+        var w = row.querySelector('.g-w');
+        if (w) w.focus();
+      }
+      document.getElementById('glassUnit').addEventListener('change', applyGlassPlaceholders);
+      document.getElementById('btnAddGlassRow').addEventListener('click', addGlassRow);
+      glassRowsEl.addEventListener('click', function (e) {
+        var btn = e.target;
+        if (!btn || !btn.classList || !btn.classList.contains('glass-del')) return;
+        var row = btn;
+        while (row && !(row.classList && row.classList.contains('glass-row'))) row = row.parentNode;
+        if (!row) return;
+        var rows = glassRowsEl.querySelectorAll('.glass-row');
+        if (rows.length > 1) {
+          row.parentNode.removeChild(row);
+          renumberGlassRows();
+        } else {
+          var ins = row.querySelectorAll('input');
+          for (var i = 0; i < ins.length; i++) ins[i].value = '';
+          var ar = row.querySelector('.glass-row-area');
+          ar.textContent = ''; ar.classList.remove('show');
+        }
+      });
       document.getElementById('btnGlass').addEventListener('click', function () {
-        var gw = parseFloat(document.getElementById('glassW').value);
-        var gh = parseFloat(document.getElementById('glassH').value);
-        if (!(gw > 0.25) || !(gh > 0.25)) { document.getElementById('glassResult').classList.remove('show'); return; }
-        var area = gw * gh / 144;
-        document.getElementById('glassArea').textContent = area.toFixed(2);
-        document.getElementById('glassCut').textContent = fmt(gw - 0.25) + ' × ' + fmt(gh - 0.25);
+        var ft = document.getElementById('glassUnit').value === 'ft';
+        var factor = ft ? 12 : 1;
+        var unitUr = ft ? 'فٹ' : 'انچ';
+        var rows = glassRowsEl.querySelectorAll('.glass-row');
+        var totalArea = 0, totalQty = 0, bodyHtml = '', cutHtml = '', lines = [], valid = 0;
+        for (var i = 0; i < rows.length; i++) {
+          var wv = rows[i].querySelector('.g-w').value;
+          var hv = rows[i].querySelector('.g-h').value;
+          var areaEl = rows[i].querySelector('.glass-row-area');
+          if (wv === '' && hv === '') { areaEl.textContent = ''; areaEl.classList.remove('show'); continue; }
+          var gw = parseFloat(wv), gh = parseFloat(hv);
+          var q = parseInt(rows[i].querySelector('.g-q').value, 10);
+          if (!(q >= 1)) q = 1;
+          var gwIn = gw * factor, ghIn = gh * factor;
+          if (!(gwIn > 0.25) || !(ghIn > 0.25)) { areaEl.textContent = ''; areaEl.classList.remove('show'); continue; }
+          var per = gwIn * ghIn / 144;
+          var rowArea = per * q;
+          totalArea += rowArea; totalQty += q; valid++;
+          var sizeTxt = glassTrim(gw) + ' × ' + glassTrim(gh) + ' ' + unitUr;
+          var cutTxt = glassTrim(gwIn - 0.25) + ' × ' + glassTrim(ghIn - 0.25);
+          areaEl.textContent = 'اس سائز کا رقبہ: ' + rowArea.toFixed(2) + ' اسکوائر فٹ (فی شیشہ ' + per.toFixed(2) + ' × تعداد ' + q + ')';
+          areaEl.classList.add('show');
+          bodyHtml += '<tr><td><span class="num">' + glassTrim(gw) + ' × ' + glassTrim(gh) + '</span> ' + unitUr + '</td><td class="val">' + q + '</td><td class="val">' + rowArea.toFixed(2) + '</td></tr>';
+          cutHtml += '<li>سائز ' + valid + ' — کٹنگ: <span class="num">' + cutTxt + ' انچ</span> — تعداد <span class="num">' + q + '</span></li>';
+          lines.push('سائز ' + sizeTxt + ' — تعداد: ' + q + ' — رقبہ: ' + rowArea.toFixed(2) + ' sq ft — کٹنگ: ' + cutTxt + ' انچ');
+        }
+        var shareBtn = document.getElementById('btnShareGlass');
+        if (!valid) {
+          document.getElementById('glassResult').classList.remove('show');
+          shareBtn.style.display = 'none';
+          return;
+        }
+        document.getElementById('glassBody').innerHTML = bodyHtml;
+        document.getElementById('glassCutList').innerHTML = cutHtml;
+        document.getElementById('glassArea').textContent = totalArea.toFixed(2);
+        document.getElementById('glassPieces').textContent = totalQty;
+        var gmsg = 'شیشہ کیلکولیٹر — JAVAID ALUMINUM ایپ\n' + lines.join('\n') + '\nکل شیشے: ' + totalQty + '\nکل رقبہ: ' + totalArea.toFixed(2) + ' اسکوائر فٹ';
+        shareBtn.href = 'https://wa.me/?text=' + encodeURIComponent(gmsg);
+        shareBtn.style.display = 'flex';
         document.getElementById('glassResult').classList.add('show');
+      });
+
+      // ---------- Glass: clear everything & start over ----------
+      var btnClearGlass = document.getElementById('btnClearGlass');
+      var glassArmTimer = null;
+      function glassDisarm() {
+        clearTimeout(glassArmTimer);
+        btnClearGlass.removeAttribute('data-arm');
+        btnClearGlass.classList.remove('armed');
+        btnClearGlass.textContent = 'تمام صاف کریں — نیا حساب شروع کریں';
+      }
+      btnClearGlass.addEventListener('click', function () {
+        if (btnClearGlass.getAttribute('data-arm') === '1') {
+          glassDisarm();
+          var rows = glassRowsEl.querySelectorAll('.glass-row');
+          for (var i = rows.length - 1; i >= 1; i--) rows[i].parentNode.removeChild(rows[i]);
+          var firstRow = glassRowsEl.querySelector('.glass-row');
+          var ins = firstRow.querySelectorAll('input');
+          for (var k = 0; k < ins.length; k++) ins[k].value = '';
+          var ar = firstRow.querySelector('.glass-row-area');
+          ar.textContent = ''; ar.classList.remove('show');
+          renumberGlassRows();
+          document.getElementById('glassResult').classList.remove('show');
+          document.getElementById('btnShareGlass').style.display = 'none';
+          var w = firstRow.querySelector('.g-w');
+          if (w) w.focus();
+        } else {
+          btnClearGlass.setAttribute('data-arm', '1');
+          btnClearGlass.classList.add('armed');
+          btnClearGlass.textContent = 'تمام سائز اور نتیجہ صاف ہو جائے گا — یقینی ہیں؟ دوبارہ ٹیپ کریں';
+          glassArmTimer = setTimeout(glassDisarm, 4000);
+        }
       });
 
       // ---------- Measurement converter ----------
@@ -1499,6 +1941,285 @@
           document.body.classList.add('gate-open');
         }
         renderProfile();
+      })();
+    </script>
+
+    <script>
+      // ---------- Estimate -> customer quote + Udhaar khata ----------
+      (function () {
+        var KEY = 'ja_khata_v1';
+        function storeGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+        function storeSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+        function esc(s) {
+          return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+          });
+        }
+        function rs(n) { return Math.round(n).toLocaleString('en-US'); }
+        function todayStr() {
+          try { return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date()); }
+          catch (e) { return ''; }
+        }
+        function normMobile(raw) {
+          var m = String(raw || '').replace(/\D/g, '');
+          if (m.length === 12 && m.indexOf('92') === 0) m = '0' + m.slice(2);
+          if (m.length === 10 && m.charAt(0) === '3') m = '0' + m;
+          return /^03\d{9}$/.test(m) ? m : '';
+        }
+        function waNum(local) { return '92' + local.slice(1); }
+        function myName() {
+          try { var p = JSON.parse(storeGet('ja_profile') || 'null'); return (p && p.name) ? p.name : ''; }
+          catch (e) { return ''; }
+        }
+        function loadJobs() {
+          try { var j = JSON.parse(storeGet(KEY) || '[]'); return Array.isArray(j) ? j : []; }
+          catch (e) { return []; }
+        }
+        function saveJobs(j) { storeSet(KEY, JSON.stringify(j)); }
+        function paidOf(job) { var s = 0; for (var i = 0; i < job.payments.length; i++) s += job.payments[i].amt; return s; }
+        function balOf(job) { return Math.max(0, job.total - paidOf(job)); }
+
+        // ----- Customer quote link (from the estimate calculator) -----
+        window.jaRefreshQuoteLink = function () {
+          var est = window.jaLastEstimate; if (!est) return;
+          var name = document.getElementById('estCustName').value.replace(/\s+/g, ' ').trim();
+          var mob = normMobile(document.getElementById('estCustMob').value);
+          var msg = 'اسٹیمیٹ — JAVAID ALUMINUM KARACHI\n' +
+            'تاریخ: ' + todayStr() + '\n' +
+            (name ? 'کسٹمر: ' + name + '\n' : '') +
+            (est.sizes ? est.sizes + '\n' : 'کھڑکی سائز: ' + est.W + ' x ' + est.H + ' فٹ — تعداد: ' + est.N + '\n') +
+            est.lines.join('\n') + '\n' +
+            'کل لمبائی: ' + est.total + ' RFT\n' +
+            (est.sqftBasis ? 'کل اسکوائر فٹ (4×4 یا بڑی کھڑکیاں): ' + est.sqftBasis + ' sq ft\n' : '') +
+            (est.amount ? 'ریٹ: Rs ' + est.rate + ' فی اسکوائر فٹ — کل رقم (اندازاً): Rs ' + est.amount + '\n' : '') +
+            'نوٹ: یہ اندازاً اسٹیمیٹ ہے — حتمی ناپ اور ریٹ سائٹ کی تصدیق کے بعد طے ہوگا۔\n' +
+            '— JAVAID ALUMINUM ایپ کے ذریعے بھیجا گیا';
+          var base = mob ? 'https://wa.me/' + waNum(mob) : 'https://wa.me/';
+          document.getElementById('btnQuoteCust').href = base + '?text=' + encodeURIComponent(msg);
+        };
+        var cn = document.getElementById('estCustName'), cm = document.getElementById('estCustMob');
+        if (cn) cn.addEventListener('input', window.jaRefreshQuoteLink);
+        if (cm) cm.addEventListener('input', window.jaRefreshQuoteLink);
+
+        // ----- "Add this job to khata" from the estimate result -----
+        document.getElementById('btnEstKhata').addEventListener('click', function () {
+          var est = window.jaLastEstimate; if (!est) return;
+          var name = cn.value.replace(/\s+/g, ' ').trim();
+          var mob = normMobile(cm.value);
+          document.getElementById('khName').value = name;
+          document.getElementById('khMobile').value = mob;
+          document.getElementById('khDetail').value = est.detail;
+          showView('khata');
+          setTimeout(function () { document.getElementById('khTotal').focus(); }, 60);
+        });
+
+        // ----- Khata rendering -----
+        var listEl = document.getElementById('khataList');
+        function renderKhata() {
+          var jobs = loadJobs();
+          document.getElementById('btnClearKhata').style.display = jobs.length ? 'flex' : 'none';
+          document.getElementById('khataClearHint').style.display = jobs.length ? 'block' : 'none';
+          var tJobs = jobs.length, tRecv = 0, tDue = 0, dueCount = 0;
+          for (var i = 0; i < jobs.length; i++) { tRecv += paidOf(jobs[i]); var b = balOf(jobs[i]); tDue += b; if (b > 0) dueCount++; }
+          document.getElementById('khJobs').textContent = tJobs;
+          document.getElementById('khReceived').textContent = rs(tRecv);
+          document.getElementById('khDue').textContent = rs(tDue);
+          var dueTotal = document.getElementById('dueTotal');
+          dueTotal.textContent = 'Rs ' + rs(tDue);
+          dueTotal.classList.toggle('clear', tDue <= 0);
+          document.getElementById('dueSub').textContent = tJobs === 0
+            ? 'ابھی کوئی کھاتہ نہیں — پہلی جاب شامل کریں'
+            : (dueCount > 0 ? dueCount + ' کسٹمر کا بقایا باقی ہے — دیکھنے کے لیے ٹیپ کریں' : 'تمام کھاتے صاف ہیں — کوئی بقایا نہیں');
+          if (!jobs.length) {
+            listEl.innerHTML = '<div class="card khata-empty">ابھی کوئی کھاتہ نہیں۔ اوپر فارم سے پہلی جاب شامل کریں — یا اسٹیمیٹ کیلکولیٹر سے حساب کر کے «یہ جاب کھاتے میں شامل کریں» دبائیں۔</div>';
+            return;
+          }
+          var sorted = jobs.slice().sort(function (a, b2) { return balOf(b2) - balOf(a) || b2.id - a.id; });
+          var html = '';
+          for (var j = 0; j < sorted.length; j++) {
+            var job = sorted[j], paid = paidOf(job), bal = balOf(job);
+            var remindMsg = 'السلام علیکم ' + job.name + ' صاحب،\n' +
+              'آپ کے کام «' + (job.detail || 'ایلومینیم کام') + '» کا بقایا Rs ' + rs(bal) + ' ہے ' +
+              '(کل رقم Rs ' + rs(job.total) + '، وصول شدہ Rs ' + rs(paid) + ')۔\n' +
+              'براہ کرم ادائیگی کی مہربانی فرمائیں۔ شکریہ' + (myName() ? '\n— ' + myName() : '') + '\n(JAVAID ALUMINUM ایپ کے ذریعے)';
+            var remindHref = job.mobile ? 'https://wa.me/' + waNum(job.mobile) + '?text=' + encodeURIComponent(remindMsg) : 'https://wa.me/?text=' + encodeURIComponent(remindMsg);
+            html += '<div class="card job-card" data-id="' + job.id + '">' +
+              '<div class="job-head"><div><div class="job-name">' + esc(job.name) + '</div>' +
+              '<div class="job-meta">' + esc(job.detail || '') + (job.mobile ? ' — <span class="num">' + esc(job.mobile) + '</span>' : '') + '<br>' + esc(job.date || '') + (job.note ? ' — ' + esc(job.note) : '') + '</div></div>' +
+              '<button type="button" class="job-del" data-del="' + job.id + '">حذف</button></div>' +
+              '<div class="job-amts">' +
+              '<div class="stat-cell"><div class="s-num">' + rs(job.total) + '</div><div class="s-lab">کل رقم (Rs)</div></div>' +
+              '<div class="stat-cell"><div class="s-num">' + rs(paid) + '</div><div class="s-lab">وصول (Rs)</div></div>' +
+              '<div class="stat-cell bal' + (bal <= 0 ? ' clear' : '') + '"><div class="s-num">' + rs(bal) + '</div><div class="s-lab">بقایا (Rs)</div></div>' +
+              '</div>';
+            if (job.payments.length) {
+              html += '<ul class="pay-list">';
+              for (var p = 0; p < job.payments.length; p++) {
+                html += '<li><span>' + esc(job.payments[p].label || 'ادائیگی') + ' — ' + esc(job.payments[p].date || '') + '</span><span style="display:flex;align-items:center;gap:8px"><span class="num">Rs ' + rs(job.payments[p].amt) + '</span><button type="button" class="pay-del" data-delpay="' + job.id + ':' + p + '" aria-label="یہ ادائیگی حذف کریں">حذف</button></span></li>';
+              }
+              html += '</ul>';
+            }
+            html += '<div class="job-actions">' +
+              (bal > 0 ? '<a class="btn btn-remind" href="' + remindHref + '" target="_blank" rel="noopener">یاددہانی بھیجیں</a>' : '<span class="btn btn-pay" style="cursor:default">حساب صاف ✓</span>') +
+              (bal > 0 ? '<button type="button" class="btn btn-pay" data-pay="' + job.id + '">ادائیگی شامل کریں</button>' : '<span></span>') +
+              '<button type="button" class="btn btn-pay" data-edit="' + job.id + '">ترمیم کریں — غلطی درست کریں</button>' +
+              '<span class="hint" style="align-self:center">پوری جاب ہٹانی ہو تو اوپر «حذف» دبائیں</span>' +
+              '</div>' +
+              '<div class="pay-form" id="payForm-' + job.id + '">' +
+              '<label class="f" for="payAmt-' + job.id + '">وصول شدہ رقم (Rs)</label>' +
+              '<input type="number" id="payAmt-' + job.id + '" inputmode="numeric" min="0" step="1" placeholder="10000" />' +
+              '<button type="button" class="btn btn-gold btn-block" data-savepay="' + job.id + '">ادائیگی محفوظ کریں</button>' +
+              '</div></div>';
+          }
+          listEl.innerHTML = html;
+        }
+
+        listEl.addEventListener('click', function (e) {
+          var t = e.target;
+          while (t && t !== listEl && !t.getAttribute('data-pay') && !t.getAttribute('data-savepay') && !t.getAttribute('data-del') && !t.getAttribute('data-edit') && !t.getAttribute('data-delpay')) t = t.parentElement;
+          if (!t || t === listEl) return;
+          var jobs = loadJobs(), i, job;
+          if (t.getAttribute('data-pay')) {
+            var f = document.getElementById('payForm-' + t.getAttribute('data-pay'));
+            if (f) { f.classList.toggle('show'); var inp = f.querySelector('input'); if (inp && f.classList.contains('show')) inp.focus(); }
+            return;
+          }
+          if (t.getAttribute('data-savepay')) {
+            var id2 = parseInt(t.getAttribute('data-savepay'), 10);
+            var amt = parseFloat(document.getElementById('payAmt-' + id2).value);
+            if (!(amt > 0)) return;
+            for (i = 0; i < jobs.length; i++) if (jobs[i].id === id2) { job = jobs[i]; break; }
+            if (!job) return;
+            job.payments.push({ amt: amt, date: todayStr(), label: 'ادائیگی' });
+            saveJobs(jobs); renderKhata();
+            return;
+          }
+          if (t.getAttribute('data-edit')) {
+            var idE = parseInt(t.getAttribute('data-edit'), 10);
+            for (i = 0; i < jobs.length; i++) if (jobs[i].id === idE) { job = jobs[i]; break; }
+            if (!job) return;
+            editingId = idE;
+            document.getElementById('khName').value = job.name || '';
+            document.getElementById('khMobile').value = job.mobile || '';
+            document.getElementById('khDetail').value = job.detail || '';
+            document.getElementById('khTotal').value = job.total;
+            document.getElementById('khAdvance').value = '';
+            document.getElementById('khNote').value = job.note || '';
+            document.getElementById('khFormTitle').textContent = 'جاب کی ترمیم — ' + job.name;
+            document.getElementById('khSubmit').textContent = 'تبدیلی محفوظ کریں';
+            document.getElementById('khCancelEdit').style.display = 'flex';
+            khHideErr();
+            document.getElementById('khataForm').scrollIntoView({ block: 'start' });
+            return;
+          }
+          if (t.getAttribute('data-delpay')) {
+            if (t.getAttribute('data-arm') === '1') {
+              var parts = t.getAttribute('data-delpay').split(':');
+              var idP = parseInt(parts[0], 10), idxP = parseInt(parts[1], 10);
+              for (i = 0; i < jobs.length; i++) if (jobs[i].id === idP) { job = jobs[i]; break; }
+              if (!job) return;
+              job.payments.splice(idxP, 1);
+              saveJobs(jobs); renderKhata();
+            } else {
+              t.setAttribute('data-arm', '1'); t.textContent = 'یقینی حذف؟';
+              setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-arm'); t.textContent = 'حذف'; } }, 3000);
+            }
+            return;
+          }
+          if (t.getAttribute('data-del')) {
+            if (t.getAttribute('data-arm') === '1') {
+              var id3 = parseInt(t.getAttribute('data-del'), 10);
+              saveJobs(jobs.filter(function (x) { return x.id !== id3; }));
+              if (editingId === id3) resetKhForm();
+              renderKhata();
+            } else {
+              t.setAttribute('data-arm', '1'); t.textContent = 'یقینی حذف؟ دوبارہ ٹیپ کریں';
+              setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-arm'); t.textContent = 'حذف'; } }, 3500);
+            }
+          }
+        });
+
+        // ----- New job form (also used to edit an existing job) -----
+        var khErr = document.getElementById('khError');
+        var editingId = null;
+        function khShowErr(m) { khErr.textContent = m; khErr.classList.add('show'); }
+        function khHideErr() { khErr.classList.remove('show'); }
+        function resetKhForm() {
+          editingId = null;
+          document.getElementById('khataForm').reset();
+          document.getElementById('khFormTitle').textContent = 'نئی جاب / نیا کھاتہ';
+          document.getElementById('khSubmit').textContent = 'کھاتے میں شامل کریں';
+          document.getElementById('khCancelEdit').style.display = 'none';
+          khHideErr();
+        }
+        document.getElementById('khCancelEdit').addEventListener('click', resetKhForm);
+        document.getElementById('khataForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = document.getElementById('khName').value.replace(/\s+/g, ' ').trim();
+          var mobRaw = document.getElementById('khMobile').value;
+          var mob = normMobile(mobRaw);
+          var detail = document.getElementById('khDetail').value.replace(/\s+/g, ' ').trim();
+          var total = parseFloat(document.getElementById('khTotal').value);
+          var adv = parseFloat(document.getElementById('khAdvance').value) || 0;
+          if (!name) { khShowErr('براہ کرم کسٹمر کا نام لکھیں۔'); return; }
+          if (mobRaw.replace(/\D/g, '') && !mob) { khShowErr('موبائل نمبر درست نہیں — 11 ہندسوں کا ہو اور 03 سے شروع ہو۔'); return; }
+          if (!(total > 0)) { khShowErr('براہ کرم کل رقم (Rs) لکھیں۔'); return; }
+          if (adv < 0 || adv > total) { khShowErr('ایڈوانس کل رقم سے زیادہ نہیں ہو سکتا۔'); return; }
+          khHideErr();
+          var jobs = loadJobs();
+          if (editingId) {
+            for (var ei = 0; ei < jobs.length; ei++) {
+              if (jobs[ei].id === editingId) {
+                jobs[ei].name = name;
+                jobs[ei].mobile = mob;
+                jobs[ei].detail = detail;
+                jobs[ei].total = total;
+                jobs[ei].note = document.getElementById('khNote').value.replace(/\s+/g, ' ').trim();
+                if (adv > 0) jobs[ei].payments.push({ amt: adv, date: todayStr(), label: 'ایڈوانس' });
+                break;
+              }
+            }
+            saveJobs(jobs); renderKhata();
+            resetKhForm();
+            document.getElementById('khataList').scrollIntoView({ block: 'start' });
+            return;
+          }
+          var job = { id: Date.now(), name: name, mobile: mob, detail: detail, total: total, note: document.getElementById('khNote').value.replace(/\s+/g, ' ').trim(), date: todayStr(), payments: [] };
+          if (adv > 0) job.payments.push({ amt: adv, date: todayStr(), label: 'ایڈوانس' });
+          jobs.push(job);
+          saveJobs(jobs); renderKhata();
+          this.reset();
+          document.getElementById('khataList').scrollIntoView({ block: 'start' });
+        });
+
+        // ----- Clear ALL khata entries & start over -----
+        var btnClearKhata = document.getElementById('btnClearKhata');
+        var khArmTimer = null;
+        function khDisarm() {
+          clearTimeout(khArmTimer);
+          btnClearKhata.removeAttribute('data-arm');
+          btnClearKhata.classList.remove('armed');
+          btnClearKhata.textContent = 'تمام کھاتے صاف کریں — از سرِ نو شروع کریں';
+        }
+        btnClearKhata.addEventListener('click', function () {
+          if (btnClearKhata.getAttribute('data-arm') === '1') {
+            khDisarm();
+            saveJobs([]);
+            resetKhForm();
+            renderKhata();
+          } else {
+            btnClearKhata.setAttribute('data-arm', '1');
+            btnClearKhata.classList.add('armed');
+            btnClearKhata.textContent = 'تمام جابز اور ادائیگیاں مستقل حذف ہو جائیں گی — یقینی ہیں؟ دوبارہ ٹیپ کریں';
+            khArmTimer = setTimeout(khDisarm, 4000);
+          }
+        });
+
+        // ----- Home due card: keyboard access -----
+        var dueCard = document.getElementById('khataDueCard');
+        dueCard.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showView('khata'); } });
+
+        renderKhata();
       })();
     </script>
   <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){})}</script></body>
